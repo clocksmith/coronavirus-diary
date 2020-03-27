@@ -1,3 +1,4 @@
+
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -63,9 +64,7 @@ import 'app_localizations_en.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale)
-      : assert(locale != null),
-        localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale) : assert(locale != null), localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   // ignore: unused_field
   final String localeName;
@@ -74,8 +73,7 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -87,8 +85,7 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -96,9 +93,11 @@ abstract class AppLocalizations {
   ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[Locale('en')];
+  static const List<Locale> supportedLocales = <Locale>[
+    Locale('en')
+  ];
 
-  // The title of the AssesmentScreen
+  // The title of the AssessmentScreen
   String get assessmentScreenTitle;
 
   // The patient does not require further testing
@@ -119,7 +118,7 @@ abstract class AppLocalizations {
   // Advise the patient to remain calm
   String get positiveAssessmentDoNotPanic;
 
-  // An error occured while trying to fetch data
+  // An error occurred while trying to fetch data
   String get checkupScreenErrorRetrievingExperience;
 
   // A label that indicates that the app is busy loading the patient's assessment
@@ -221,7 +220,7 @@ abstract class AppLocalizations {
   // Tell a user that has already completed their checkup that they can check again tomorrow
   String get homeScreenCheckBackTomorrow;
 
-  // View the assement of the checkup data
+  // View the assessment of the checkup data
   String get homeScreenViewMyAssessment;
 
   // Prompt for the app sharing sheet, see https://pub.dev/packages/share. The APP_LINK word should not be translated, it will be replaced by a link the app at runtime
@@ -255,7 +254,7 @@ abstract class AppLocalizations {
   String get tutorialIntroStepCompleteACheckup;
 
   // Describes the benefit of the app
-  String get tutorialIntroStepRecieveAssessment;
+  String get tutorialIntroStepReceiveAssessment;
 
   // Describes the benefit of the app to the community.
   String get tutorialIntroStepAidEffort;
@@ -265,9 +264,6 @@ abstract class AppLocalizations {
 
   // Heading that's shown after the user has agreed to the app license. The name of the app, CovidNearMe, should not be translated
   String get getStartedStepJoined;
-
-  // Label for the button that shows the next app screen
-  String get getStartedStepClick;
 
   // Label for the button that indicates that the user did not accept the app license
   String get consentStepDidNotAgree;
@@ -295,10 +291,48 @@ abstract class AppLocalizations {
 
   // Label for the back button on the denied consent screen
   String get deniedConsentBackButton;
+
+  // Label for the first symptom question on the checkup screen
+  String get checkupQuestionShortnessOfBreath;
+
+  // Label for the second symptom question on the checkup screen
+  String get checkupQuestionCough;
+
+  // Label for the third symptom question on the checkup screen
+  String get checkupQuestionNauseous;
+
+  // Label for the fourth symptom question on the checkup screen
+  String get checkupQuestionFever;
+
+  // Label to answer a symptom question on the checkup screen
+  String get checkupAnswerNone;
+
+  // Label to answer a symptom question on the checkup screen
+  String get checkupAnswerMild;
+
+  // Label to answer a symptom question on the checkup screen
+  String get checkupAnswerModerate;
+
+  // Label to answer a symptom question on the checkup screen
+  String get checkupAnswerSevere;
+
+  // Label to answer a symptom question on the checkup screen
+  String get checkupAnswerICantCatchMyBreath;
+
+  // Label to answer a symptom question on the checkup screen
+  String get checkupAnswerUncontrollableItHurts;
+
+  // Label to answer the fever symptom question on the checkup screen
+  String get checkupAnswerNo;
+
+  // Label to answer the fever symptom question on the checkup screen
+  String get checkupAnswerMaybe;
+
+  // Label to answer the fever symptom question on the checkup screen
+  String get checkupAnswerImBurningUp;
 }
 
-class _AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -307,19 +341,16 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['en'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations _lookupAppLocalizations(Locale locale) {
-  switch (locale.languageCode) {
-    case 'en':
-      return AppLocalizationsEn();
+  switch(locale.languageCode) {
+    case 'en': return AppLocalizationsEn();
   }
-  assert(false,
-      'AppLocalizations.delegate failed to load unsupported locale "$locale"');
+  assert(false, 'AppLocalizations.delegate failed to load unsupported locale "$locale"');
   return null;
 }

@@ -8,9 +8,9 @@ class QuestionsRepository {
           id: '5325',
           title: 'Are you experiencing shortness of breath?',
           subtitle: "Do you feel like you can't get enough air?",
-          min: 0,
+          min: 1,
           max: 4,
-          initialValue: 0,
+          initialValue: 1,
           labels: {
             '0': "I can breathe fine",
             '4': "I can't breathe at all",
